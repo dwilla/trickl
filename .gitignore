@@ -2,3 +2,4 @@
 /go_server/tmp/
 
 .DS_Store
+.env
