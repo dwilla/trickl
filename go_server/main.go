@@ -4,14 +4,27 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+)
 
-	"github.com/dwilla/trickl/views"
+var (
+	Session     SessionStruct
+	Feed        []FeedItem
+	CurrentPost int
 )
 
 func main() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		views.Home().Render(r.Context(), w)
-	})
+	var err error
+	Session, err = createSession()
+	if err != nil {
+		panic(err)
+	}
+
+	Feed, err = getFeed()
+	if err != nil {
+		panic(err)
+	}
+
+	http.HandleFunc("/", handlePost)
 
 	fmt.Println("Server starting on :3000")
 	log.Fatal(http.ListenAndServe(":3000", nil))

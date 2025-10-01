@@ -1,6 +1,7 @@
 package views
 
-templ Home() {
-	<h1>Another thing!!!</h1>
-	<a href="/">Refresh</a>
+templ Home(post string) {
+	<h1>A post:</h1>
+	<h2>{ post }</h2>
+	<a href="/">Another!</a>
 }
