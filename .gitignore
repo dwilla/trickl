@@ -1,0 +1,4 @@
+/go_server/.air.toml
+/go_server/tmp/
+
+.DS_Store
